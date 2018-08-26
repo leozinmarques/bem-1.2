@@ -1,0 +1,10 @@
+.navbar,
+.navbar-default {
+    background-image: none !important;
+    background-color: #94D1EA;
+}
+
+.logo {
+  margin-top: -10px;
+  max-width: 80%;
+}
