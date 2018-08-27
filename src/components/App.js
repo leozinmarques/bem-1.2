@@ -8,6 +8,7 @@ import Questionario from './pages/Questionario.js';
 import Perguntas from './pages/Perguntas.js';
 import Login from './pages/Login.js';
 import NavbarBem from './layout/NavbarBem.js';
+import JumbotronBem from './layout/JumbotronBem.js';
 import {Grid} from 'react-bootstrap';
 import '../styles/css/App.css';
 
@@ -36,6 +37,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/Formulario" component={Formulario} />
             <Route exact path="/Login" component={Login} />
+            <Route exact path="/JumbotronBem" component={JumbotronBem} />
             <PrivateRoute exact path="/Questionario" component={Questionario} />
             <PrivateRoute exact path="/Perguntas" component={Perguntas} />
           </Switch>
