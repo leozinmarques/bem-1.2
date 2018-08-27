@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Row} from 'react-bootstrap';
 import {isAdmin, isLoggedIn, logout} from '../../tils/Auth';
 import logo from '../../styles/images/bem-logo.png';
 import '../../styles/css/NavbarBem.css';

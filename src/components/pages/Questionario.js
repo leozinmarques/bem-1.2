@@ -171,7 +171,7 @@ export default class CrudPerguntas extends React.Component{
               </Modal.Body>
               <Modal.Footer>
                 <Button onClick={this.onDelete} bsStyle="success">Confirma</Button>
-                <Button onClick={this.onCloseModal} bsStyle="danger">Close</Button>
+                <Button onClick={this.onCloseModal} bsStyle="danger">Cancelar</Button>
               </Modal.Footer>
             </Modal>
             </Col>

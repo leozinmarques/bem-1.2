@@ -98,15 +98,21 @@ export default class CrudPerguntas extends React.Component{
         [evento.target.id]: evento.target.value
       });
 
-      axios.get('https://bemapi.herokuapp.com/questionario/' + evento.target.value + '/perguntas')
-  		.then((response) => {
-  			this.setState({
-  				perguntas: response.data
-  			});
-  		})
-  		.catch((error) =>{
-  			console.log(error.response);
-  		});
+      if(evento.target.value == ''){
+        this.setState({
+          perguntas: []
+        });
+      }else{
+        axios.get('https://bemapi.herokuapp.com/questionario/' + evento.target.value + '/perguntas')
+    		.then((response) => {
+    			this.setState({
+    				perguntas: response.data
+    			});
+    		})
+    		.catch((error) =>{
+    			console.log(error.response);
+    		});
+      }
     }
 
     this.invalid = () => {
@@ -199,7 +205,7 @@ export default class CrudPerguntas extends React.Component{
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={this.onDelete} bsStyle="success">Confirma</Button>
-              <Button onClick={this.onCloseModal} bsStyle="danger">Close</Button>
+              <Button onClick={this.onCloseModal} bsStyle="danger">Cancelar</Button>
             </Modal.Footer>
           </Modal>
           </Col>
