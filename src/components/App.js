@@ -30,16 +30,16 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div>
-        <NavbarBem />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/Formulario" component={Formulario} />
-          <Route exact path="/Login" component={Login} />
-          <PrivateRoute exact path="/Questionario" component={Questionario} />
-          <PrivateRoute exact path="/Perguntas" component={Perguntas} />
-        </Switch>
-      </div>
+        <div>
+          <NavbarBem />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/Formulario" component={Formulario} />
+            <Route exact path="/Login" component={Login} />
+            <PrivateRoute exact path="/Questionario" component={Questionario} />
+            <PrivateRoute exact path="/Perguntas" component={Perguntas} />
+          </Switch>
+        </div>
       </Router>
     );
   }
