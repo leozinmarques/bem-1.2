@@ -8,7 +8,10 @@ export default class JumbotronBem extends React.Component{
 			<Jumbotron>
 			  <h1>BEM</h1>
 			  <p>
-			    Fazendo um teste simples
+			    O sistema BEM encaminha pessoas que suspeitam ter
+			    Depressão, Estresse ou Ansiedade para profissionais
+			    adequados baseando-se em um questionário interativo
+			    feito a partir da escala DASS21.
 			  </p>
 			  <p>
 			    <Button bsStyle="primary">Veja Mais</Button>
