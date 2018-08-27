@@ -8,7 +8,7 @@ class Cards extends Component {
 	render(){
 		return(
 			<Row className="show-grid">
-				<Col xs={6} md={4}>
+				<Col xs={12} md={4} sm={6}>
 			      <Thumbnail src={depressao} alt="242x200">
 			        <h3>Depressão</h3>
 			        <p>Depressão é um estado depressivo de humor, caracterizado por aversão à atividade,
@@ -21,7 +21,7 @@ class Cards extends Component {
 			        </p>
 			      </Thumbnail>
 			    </Col>
-			    <Col xs={6} md={4}>
+			    <Col xs={12} md={4} sm={6}>
 			      <Thumbnail src={ansiedade} alt="242x200">
 			        <h3>Ansiedade</h3>
 			        <p>Ansiedade, ânsia ou nervosismo é uma característica biológica do ser humano e animais,
@@ -35,7 +35,7 @@ class Cards extends Component {
 			        </p>
 			      </Thumbnail>
 			    </Col>
-			    <Col xs={6} md={4}>
+			    <Col xs={12} md={4} sm={6}>
 			      <Thumbnail src={estresse} alt="242x200">
 			        <h3>Estresse</h3>
 			        <p>O termo estresse, agaste ou consumição, foi usado por Selye (1976) com um sentido neutro - nem positivo nem negativo.

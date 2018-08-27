@@ -11,13 +11,13 @@ class Home extends Component {
     return (
     	<Grid>
 	      	<Row>
-	      		<Col sm={0} xs={1} md={1} />
-	      		<Col sm={12} xs={12} md={12} >
+	      		<Col sm={1} xs={1} md={1} />
+	      		<Col sm={10} xs={10} md={10} >
 	      			<UncontrolledCarousel className="carousel" />
 	      			<JumbotronBem />
 	      			<Cards />
 	      		</Col>
-	      		<Col sm={0} xs={1} md={1} />
+	      		<Col sm={1} xs={1} md={1} />
 	      	</Row>
       	</Grid>
     );
