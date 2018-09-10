@@ -32,9 +32,8 @@ class NavbarBem extends Component {
 							(isAdmin()) ?
 							(<NavDropdown eventKey={5} title="Admin"  id="basic-nav-dropdow n">
 								<MenuItem eventKey={5.1}><Link to ="/Questionario">Questionario</Link></MenuItem>
-				        <MenuItem eventKey={5.2}><Link to ="/Perguntas">Perguntas</Link></MenuItem>
-				        <MenuItem eventKey={5.3}>Cadastro Admin</MenuItem>
-								<MenuItem eventKey={5.4}>Cadastro Psicologo</MenuItem>
+						        <MenuItem eventKey={5.2}><Link to ="/Perguntas">Perguntas</Link></MenuItem>
+						        <MenuItem eventKey={5.3}><Link to ="/CadAdmin">Cadastro Admin</Link></MenuItem>
 							</NavDropdown>) : ("")
 						}
 						{

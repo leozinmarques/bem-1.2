@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import {FormGroup, FormControl, Button, Modal, Grid, Row, Col} from 'react-bootstrap'
+import {FormGroup, FormControl, Button, Modal, Grid, Row, Col, Radio, ButtonGroup, ButtonToolbar, ToggleButtonGroup, ToggleButton} from 'react-bootstrap'
+import '../../styles/css/Formulario.css';
 
 var respostas = {};
 
@@ -47,7 +48,9 @@ export default class Formulario extends React.Component{
 
 		this.handleChange = (evento) => {
 			evento.persist();
-			respostas[evento.target.id] = evento.target.value;
+			respostas[evento.target.name] = evento.target.value;
+			console.log(evento.target.name);
+			console.log(evento.target.value);
 		}
 
 		this.handleChangeQues = (evento) => {
@@ -125,22 +128,50 @@ export default class Formulario extends React.Component{
           <div>
           {
     				this.state.questionario.perguntas.map((row, index) => (
-    						<FormGroup controlId={row.id}>
-    							{index+1}. {row.descricao}
-    							<div className="select-size">
-    							<FormControl onChange={this.handleChange} componentClass="select" placeholder="select">
-    	                  <option value='0'>0</option>
-    										<option value='1'>1</option>
-    										<option value='2'>2</option>
-    										<option value='3'>3</option>
-    	          	</FormControl>
-    							</div>
-    						</FormGroup>
+    						<FormGroup onChange={this.handleChange} id={row.id} controlId={row.id}>
+	    							{index+1}. {row.descricao}
+	    	                  		<br/><Radio value="0" name={row.id} inline>0</Radio>
+	    	                  		<br/><Radio value="1" name={row.id} inline>1</Radio>
+	    	                  		<br/><Radio value="2" name={row.id} inline>2</Radio>
+	    	                  		<br/><Radio value="3" name={row.id} inline>3</Radio>
+	    	                  		
+	    	                  		<ButtonToolbar>
+									   <ToggleButtonGroup type="radio" name={row.id}>
+									     <ToggleButton value="0">0</ToggleButton>
+									     <ToggleButton value="1">1</ToggleButton>
+									     <ToggleButton value="2">2</ToggleButton>
+									     <ToggleButton value="3">3</ToggleButton>
+									    </ToggleButtonGroup>
+									</ButtonToolbar>
+	    	                </FormGroup>
     			))
     			}
           </div>
 
           <Button disabled={!this.validateForm()} onClick={this.onSubmit} bsStyle="success">Enviar</Button>
+
+          <Modal show={this.state.modalResult}>
+			<Modal.Header>
+				<h1> Resultado {this.state.questionario.titulo}</h1>
+			</Modal.Header>
+	        <Modal.Body>
+	        	<div className="alignMeio">
+				<img src={"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + this.state.resultado.codigo}/>
+				<h4>{this.state.resultado.codigo}</h4>
+				</div>
+				{
+					this.state.resultado.faixas.map((row, index) => (
+						<div>
+						<h2>{row.escala.descricao}: {row.titulo}</h2>
+						<p>{row.descricao}</p>
+						</div>
+					))
+				}
+			</Modal.Body>
+			<Modal.Footer>
+				<Button onClick={this.onHide}>Fechar</Button>
+			</Modal.Footer>
+	      </Modal>
 
         </Col>
         <Col sm={1} xs={1} md={1} />

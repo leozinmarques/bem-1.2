@@ -5,7 +5,7 @@ import JumbotronBem from '../layout/JumbotronBem.js';
 import {Grid, Col, Row} from 'react-bootstrap';
 
 
-class Home extends Component {
+export default class Home extends Component {
   render() {
     return (
     	<Grid>
@@ -22,4 +22,3 @@ class Home extends Component {
   }
 }
 
-export default Home;

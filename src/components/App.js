@@ -7,6 +7,7 @@ import Formulario from './pages/Formulario.js';
 import Questionario from './pages/Questionario.js';
 import Perguntas from './pages/Perguntas.js';
 import Login from './pages/Login.js';
+import CadAdmin from './pages/CadAdmin.js';
 import NavbarBem from './layout/NavbarBem.js';
 import {Grid} from 'react-bootstrap';
 import '../styles/css/App.css';
@@ -38,6 +39,7 @@ class App extends Component {
             <Route exact path="/Login" component={Login} />
             <PrivateRoute exact path="/Questionario" component={Questionario} />
             <PrivateRoute exact path="/Perguntas" component={Perguntas} />
+            <PrivateRoute exact path="/CadAdmin" component={CadAdmin} />
           </Switch>
         </div>
       </Router>
