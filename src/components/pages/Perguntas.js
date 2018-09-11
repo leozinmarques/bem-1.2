@@ -1,6 +1,6 @@
 import React from 'react';
 import {getToken} from '../../tils/Auth';
-import {Button, FormControl, FormGroup, Modal, Table, Grid, Col, Row} from 'react-bootstrap';
+import {Button, FormControl, FormGroup, Modal, Table, Grid, Col, Row, Form, ControlLabel} from 'react-bootstrap';
 import AlertSucess from '../layout/AlertSucess.js';
 import axios from 'axios';
 import ModalDel from '../layout/ModalDel.js';
@@ -11,7 +11,8 @@ export default class CrudPerguntas extends React.Component{
 
     this.state = {
       perguntas: [], newPergunta: '', questionario: [], questionarios: [], questionarioId: '',
-      modified: '', show: false, idChange: '', idDel: '', keyId: '', alert: false
+      modified: '', show: false, idChange: '', idDel: '', keyId: '', alert: false, showAlt: false, alternativas1: "",
+      alternativas2: "", alternativas3: "", alternativas4: ""
     };
 
     var config = {
@@ -62,8 +63,13 @@ export default class CrudPerguntas extends React.Component{
             console.log(error.response);
           })
     }
-
     this.onChange = (evento) => {
+      this.setState({
+        [evento.target.id]: evento.target.value
+      });
+    }
+
+    this.onChangeDescricao = (evento) => {
       const pergunta = {
           descricao: this.state.modified
       }
@@ -91,6 +97,12 @@ export default class CrudPerguntas extends React.Component{
 			});
     }
 
+    this.onClick = () =>{
+      this.setState({
+        showAlt: !this.state.showAlt
+      });
+    }
+
     this.handleChangeQues = (evento) => {
       evento.persist();
 
@@ -98,7 +110,7 @@ export default class CrudPerguntas extends React.Component{
         [evento.target.id]: evento.target.value
       });
 
-      if(evento.target.value == ''){
+      if(evento.target.value === ''){
         this.setState({
           perguntas: []
         });
@@ -116,7 +128,7 @@ export default class CrudPerguntas extends React.Component{
     }
 
     this.invalid = () => {
-      if (this.state.questionarioId == ''){
+      if (this.state.questionarioId === ''){
         return true;
       }else{
         return false;
@@ -169,6 +181,23 @@ export default class CrudPerguntas extends React.Component{
 
             <FormGroup controlId="newPergunta" bsSize="large">
               <FormControl className="form-control" autoFocus type="text" disabled={this.invalid()} value={this.state.newPergunta} onChange={this.handleChange} />
+              <Button onClick={this.onClick}>+</Button>
+              {
+                (this.state.showAlt) ? (<Form onChange={this.onChange} inline>
+                                            <FormGroup controlId="alternativas1">
+                                              <FormControl value={this.state.alternativas1} type="text" placeholder="Alternativa 1" />
+                                            </FormGroup>{' '}
+                                            <FormGroup controlId="alternativas2">
+                                              <FormControl type="text" placeholder="Alternativa 2" />
+                                            </FormGroup>{' '}
+                                            <FormGroup controlId="alternativas3">
+                                              <FormControl type="text" placeholder="Alternativa 3" />
+                                            </FormGroup>{' '}
+                                            <FormGroup controlId="alternativas4">
+                                              <FormControl type="text" placeholder="Alternativa 4" />
+                                            </FormGroup>{' '}
+                                         </Form>) : ("")
+              }
               <Button bsStyle="success" bsSize="large" onClick={this.onCreate} block>
                 Adicionar
               </Button>

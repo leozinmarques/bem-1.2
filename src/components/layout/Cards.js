@@ -4,7 +4,7 @@ import ansiedade from '../../styles/images/ansiedade.jpg';
 import depressao from '../../styles/images/depressao.jpg';
 import estresse from '../../styles/images/estresse.jpg';
 
-class Cards extends Component {
+export default class Cards extends Component {
 	render(){
 		return(
 			<Row className="show-grid">
@@ -53,5 +53,3 @@ class Cards extends Component {
 		);
 	}
 }
-
-export default Cards;

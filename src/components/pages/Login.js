@@ -81,8 +81,8 @@ export default class Login extends React.Component{
     return(
       <Grid>
         <Row>
-          <Col sm={1} xs={1} md={1} />
-          <Col sm={10} xs={10} md={10} >
+          <Col sm={3} xs={3} md={3} />
+          <Col sm={6} xs={6} md={6} >
           <h1>Login</h1>
             <form onSubmit={this.handleSubmit}>
               <FormGroup controlId="email" bsSize="large">
@@ -111,7 +111,7 @@ export default class Login extends React.Component{
               </Button>
             </form>
           </Col>
-          <Col sm={1} xs={1} md={1} />
+          <Col sm={3} xs={3} md={3} />
         </Row>
       </Grid>
       );
