@@ -13,11 +13,11 @@ export default class CrudPerguntas extends React.Component{
     this.state = {
       perguntas: [], newPergunta: '', questionario: [], questionarios: [], questionarioId: '',
       modified: '', show: false, idChange: '', idDel: '', keyId: '', alert: false, showAlt: false, alternativas: [{
-        descricao: "", peso: 1, 
+        descricao: "", valor: 1, 
       }, {
-        descricao: "", peso: 1
+        descricao: "", valor: 1
       }, {
-        descricao: "", peso: 1
+        descricao: "", valor: 1
       },]
     };
 
@@ -52,7 +52,6 @@ export default class CrudPerguntas extends React.Component{
               questionario_id: this.state.questionarioId,
               alternativas: this.state.alternativas
           }
-
           console.log(pergunta)
           axios.post('https://bemapi.herokuapp.com/pergunta', pergunta, config)
           .then(res => {
@@ -132,15 +131,25 @@ export default class CrudPerguntas extends React.Component{
 
       if(evento.target.value === ''){
         this.setState({
-          perguntas: [], alternativas1: "", alternativas2: "", alternativas3: "", alternativas4: "",
-                peso1: "", peso2: "", peso3: "", peso4: "" , newPergunta: ""
+          perguntas: [], alternativas: [{
+		descricao: "", valor: 1, 
+	      }, {
+		descricao: "", valor: 1
+	      }, {
+		descricao: "", valor: 1
+	      },]
         });
       }else{
         axios.get('https://bemapi.herokuapp.com/questionario/' + evento.target.value + '/perguntas')
     		.then((response) => {
     			this.setState({
-    				perguntas: response.data, alternativas1: "", alternativas2: "", alternativas3: "", alternativas4: "",
-                peso1: "", peso2: "", peso3: "", peso4: "" , newPergunta: ""
+    				perguntas: response.data,alternativas: [{
+				descricao: "", valor: 1, 
+			      }, {
+				descricao: "", valor: 1
+			      }, {
+				descricao: "", valor: 1
+			      },]
     			});
     		})
     		.catch((error) =>{
@@ -236,8 +245,8 @@ export default class CrudPerguntas extends React.Component{
                         </FormGroup>
                       </Col>
                       <Col sm={4} xs={4} md={4} >
-                        <FormGroup controlId={index} name="peso">
-                          <FormControl value={this.state.alternativas[index].peso} type="text" placeholder="Peso" nome="peso"/>
+                        <FormGroup controlId={index} name="valor">
+                          <FormControl value={this.state.alternativas[index].valor} type="text" placeholder="Peso" nome="valor"/>
                         </FormGroup>
                       </Col>
                       <Col sm={4} xs={4} md={4} >

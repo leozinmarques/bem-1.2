@@ -121,32 +121,23 @@ export default class Formulario extends React.Component{
             </FormControl>
           </FormGroup>
           {
-            (this.validateForm() ? <h2>Descrição</h2> : <h2></h2>)
+            (this.validateForm() ? <h3>Descrição</h3> : <h3></h3>)
           }
 
-          <h3>{this.state.questionario.descricao}</h3>
+          <p className="desc">{this.state.questionario.descricao}</p>
 
           <div>
           {
     				this.state.questionario.perguntas.map((row, index) => (
     						<FormGroup onChange={this.handleChange} id={row.id} controlId={row.id}>
-	    							{index+1}. {row.descricao}
-	    	                  		{
-	    	                  			row.alternativas.map((alt) => (
-	    	                  				<Radio value={alt} name={row.id}>{alt.descricao}</Radio>
+	    							<p className="bold">{index+1}. {row.descricao}</p>
+						<div className="perguntas">	   					
+						{   	                  			
+							row.alternativas.map((alt) => (
+	    	                  				<Radio value={alt} name={row.id} inline>{alt.descricao}</Radio>
 	    	                  			))
 	    	                  		}
-
-
-	    	                  		<ButtonToolbar>
-									   <ToggleButtonGroup type="radio" name={row.id}>
-		    	                  		{
-		    	                  			row.alternativas.map((alt) => (
-		    	                  				<ToggleButton value={alt}>{alt.descricao}</ToggleButton>
-		    	                  			))
-		    	                  		}
-		    	                  		</ToggleButtonGroup>
-									</ButtonToolbar>
+						</div>
 	    	                </FormGroup>
     			))
     	  }

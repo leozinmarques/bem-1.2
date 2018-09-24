@@ -9,3 +9,25 @@ h3{
 	text-align: justify;
 	margin-bottom: 30px;
 }
+
+h4{
+	text-align: justify;
+	padding-bottom: 30px;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.desc{
+	padding-bottom: 30px;
+}
+
+.perguntas{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+
+
+
