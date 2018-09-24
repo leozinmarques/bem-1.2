@@ -72,6 +72,7 @@ export default class Formulario extends React.Component{
 					response.data.perguntas.map((pergunta)=>  {
 						respostas[pergunta.id] = 0;
 					});
+				console.log(this.state.questionario)
 	  		})
 	  		.catch((error) =>{
 	  			console.log(error.response);
@@ -123,29 +124,32 @@ export default class Formulario extends React.Component{
             (this.validateForm() ? <h2>Descrição</h2> : <h2></h2>)
           }
 
-          <h5>{this.state.questionario.descricao}</h5>
+          <h3>{this.state.questionario.descricao}</h3>
 
           <div>
           {
     				this.state.questionario.perguntas.map((row, index) => (
     						<FormGroup onChange={this.handleChange} id={row.id} controlId={row.id}>
 	    							{index+1}. {row.descricao}
-	    	                  		<br/><Radio value="0" name={row.id} inline>0</Radio>
-	    	                  		<br/><Radio value="1" name={row.id} inline>1</Radio>
-	    	                  		<br/><Radio value="2" name={row.id} inline>2</Radio>
-	    	                  		<br/><Radio value="3" name={row.id} inline>3</Radio>
-	    	                  		
+	    	                  		{
+	    	                  			row.alternativas.map((alt) => (
+	    	                  				<Radio value={alt} name={row.id}>{alt.descricao}</Radio>
+	    	                  			))
+	    	                  		}
+
+
 	    	                  		<ButtonToolbar>
 									   <ToggleButtonGroup type="radio" name={row.id}>
-									     <ToggleButton value="0">0</ToggleButton>
-									     <ToggleButton value="1">1</ToggleButton>
-									     <ToggleButton value="2">2</ToggleButton>
-									     <ToggleButton value="3">3</ToggleButton>
-									    </ToggleButtonGroup>
+		    	                  		{
+		    	                  			row.alternativas.map((alt) => (
+		    	                  				<ToggleButton value={alt}>{alt.descricao}</ToggleButton>
+		    	                  			))
+		    	                  		}
+		    	                  		</ToggleButtonGroup>
 									</ButtonToolbar>
 	    	                </FormGroup>
     			))
-    			}
+    	  }
           </div>
 
           <Button disabled={!this.validateForm()} onClick={this.onSubmit} bsStyle="success">Enviar</Button>

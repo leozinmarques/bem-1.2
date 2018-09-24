@@ -4,6 +4,7 @@ import {Button, FormControl, FormGroup, Modal, ControlLabel, Table, Row, Grid, C
 import axios from 'axios';
 import ModalDel from '../layout/ModalDel.js';
 import AlertSucess from '../layout/AlertSucess.js';
+import '../../styles/css/Questionario.css';
 
 export default class CrudPerguntas extends React.Component{
   constructor(props) {
@@ -135,7 +136,7 @@ export default class CrudPerguntas extends React.Component{
             <FormGroup controlId="quesDescricao" bsSize="large">
               <ControlLabel>Descrição</ControlLabel>
               <FormControl componentClass="textarea" controlId="quesDescricao" className="form-control" value={this.state.quesDescricao} onChange={this.handleChange} />
-              <Button onClick={this.onCreate} bsStyle="success" bsSize="large" block>
+              <Button className="btn-add" onClick={this.onCreate} bsStyle="success" bsSize="large" block>
                   Adicionar
               </Button>
               </FormGroup>
@@ -157,8 +158,8 @@ export default class CrudPerguntas extends React.Component{
           				  <td>{row.id}</td>
           				  <td>{row.titulo}</td>
           				  <td>{row.descricao}</td>
-          				  <td><Button bsStyle="warning" className="btn-right" name={row.id} keyId={index} onClick={this.onShowModal}>Editar</Button></td>
-          				  <td><Button bsStyle="danger" className="btn-right" name={row.id} keyId={index} onClick={this.onModalDel}>Excluir</Button></td>
+          				  <td><Button bsStyle="warning" className="btn-form" name={row.id} keyId={index} onClick={this.onShowModal}>Editar</Button></td>
+          				  <td><Button bsStyle="danger" className="btn-form" name={row.id} keyId={index} onClick={this.onModalDel}>Excluir</Button></td>
           				</tr>
         			  </tbody>
   			       ))
