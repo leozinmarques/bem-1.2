@@ -60,8 +60,10 @@ export default class CrudPerguntas extends React.Component{
                   id: res.data.id
               }
               dataTest.push(object);
-              this.setState({perguntas : dataTest, alert:true})
-
+              this.setState({
+                perguntas : dataTest, alert:true, alternativas1: "", alternativas2: "", alternativas3: "", alternativas4: "",
+                peso1: "", peso2: "", peso3: "", peso4: "" , newPergunta: ""
+              })
               setTimeout(() => {
                 this.setState({ alert: false });
               }, 5000);
@@ -119,13 +121,15 @@ export default class CrudPerguntas extends React.Component{
 
       if(evento.target.value === ''){
         this.setState({
-          perguntas: []
+          perguntas: [], alternativas1: "", alternativas2: "", alternativas3: "", alternativas4: "",
+                peso1: "", peso2: "", peso3: "", peso4: "" , newPergunta: ""
         });
       }else{
         axios.get('https://bemapi.herokuapp.com/questionario/' + evento.target.value + '/perguntas')
     		.then((response) => {
     			this.setState({
-    				perguntas: response.data
+    				perguntas: response.data, alternativas1: "", alternativas2: "", alternativas3: "", alternativas4: "",
+                peso1: "", peso2: "", peso3: "", peso4: "" , newPergunta: ""
     			});
     		})
     		.catch((error) =>{
