@@ -12,8 +12,13 @@ export default class CrudPerguntas extends React.Component{
 
     this.state = {
       perguntas: [], newPergunta: '', questionario: [], questionarios: [], questionarioId: '',
-      modified: '', show: false, idChange: '', idDel: '', keyId: '', alert: false, showAlt: false, alternativas1: "",
-      alternativas2: "", alternativas3: "", alternativas4: "", peso1: "", peso2: "", peso3: "", peso4: ""
+      modified: '', show: false, idChange: '', idDel: '', keyId: '', alert: false, showAlt: false, alternativas: [{
+        descricao: "", peso: 1, 
+      }, {
+        descricao: "", peso: 1
+      }, {
+        descricao: "", peso: 1
+      },]
     };
 
     var config = {
@@ -45,10 +50,7 @@ export default class CrudPerguntas extends React.Component{
           const pergunta = {
               descricao: this.state.newPergunta,
               questionario_id: this.state.questionarioId,
-              alternativas: [
-                {descricao: this.state.alternativas1, valor: this.state.peso1}, {descricao: this.state.alternativas2, valor: this.state.peso2},
-                {descricao: this.state.alternativas3, valor: this.state.peso3}, {descricao: this.state.alternativas4, valor: this.state.peso4}
-              ]
+              alternativas: this.state.alternativas
           }
 
           console.log(pergunta)
@@ -61,8 +63,7 @@ export default class CrudPerguntas extends React.Component{
               }
               dataTest.push(object);
               this.setState({
-                perguntas : dataTest, alert:true, alternativas1: "", alternativas2: "", alternativas3: "", alternativas4: "",
-                peso1: "", peso2: "", peso3: "", peso4: "" , newPergunta: ""
+                perguntas : dataTest, alert:true
               })
               setTimeout(() => {
                 this.setState({ alert: false });
@@ -75,6 +76,16 @@ export default class CrudPerguntas extends React.Component{
     this.onChange = (evento) => {
       this.setState({
         [evento.target.id]: evento.target.value
+      });
+    }
+
+    this.onChangeAlt = (evento) => {
+      evento.persist();
+      var alternativas = this.state.alternativas;
+      var id = evento.target.id;
+      alternativas[id][evento.target.getAttribute('nome')] = evento.target.value;
+      this.setState({
+        alternativas: alternativas
       });
     }
 
@@ -145,6 +156,27 @@ export default class CrudPerguntas extends React.Component{
         return false;
       }
     }
+
+    this.question = (evento) => {
+      evento.persist();
+      console.log(evento.target.getAttribute('tipo'));
+      if(evento.target.getAttribute('tipo') === "insert"){
+        var alternativas = this.state.alternativas;
+        var question = {descricao: "", peso: 1};
+        alternativas.push(question);
+        this.setState({
+          alternativas: alternativas
+        });
+      }
+      if (evento.target.getAttribute('tipo') === "delete"){
+        var alternativas = this.state.alternativas;
+        alternativas.splice(evento.target.getAttribute('id'),1);
+        console.log(alternativas);
+        this.setState({
+          alternativas: alternativas
+        });
+      }
+    }
   }
 
 
@@ -194,56 +226,28 @@ export default class CrudPerguntas extends React.Component{
               <FormControl className="form-control" autoFocus type="text" disabled={this.invalid()} value={this.state.newPergunta} onChange={this.handleChange} />
               <Button className="btn-alt" onClick={this.onClick} disabled={this.invalid()}>ALTERNATIVAS</Button>
               {
-                (this.state.showAlt && !this.invalid()) ? (<Form onChange={this.onChange}>
-                                            <Row>
-                                              <Col sm={4} xs={4} md={4} >
-                                                <FormGroup controlId="alternativas1">
-                                                  <FormControl value={this.state.alternativas1} type="text" placeholder="Alternativa 1" />
-                                                </FormGroup>
-                                              </Col>
-                                              <Col sm={4} xs={4} md={4} >
-                                                <FormGroup controlId="peso1">
-                                                  <FormControl value={this.state.peso1} type="text" placeholder="Peso" />
-                                                </FormGroup>
-                                              </Col>
-                                            </Row>
-                                            <Row>
-                                              <Col sm={4} xs={4} md={4} >
-                                                <FormGroup controlId="alternativas2">
-                                                  <FormControl value={this.state.alternativas2} type="text" placeholder="Alternativa 2" />
-                                                </FormGroup>
-                                              </Col>
-                                              <Col sm={4} xs={4} md={4} >
-                                                <FormGroup controlId="peso2">
-                                                  <FormControl value={this.state.peso2} type="text" placeholder="Peso" />
-                                                </FormGroup>
-                                              </Col>
-                                            </Row>
-                                            <Row>
-                                              <Col sm={4} xs={4} md={4} >
-                                                <FormGroup controlId="alternativas3">
-                                                  <FormControl value={this.state.alternativas3} type="text" placeholder="Alternativa 3" />
-                                                </FormGroup>
-                                              </Col>
-                                              <Col sm={4} xs={4} md={4} >
-                                                <FormGroup controlId="peso3">
-                                                  <FormControl value={this.state.peso3} type="text" placeholder="Peso" />
-                                                </FormGroup>
-                                              </Col>
-                                            </Row>
-                                            <Row>
-                                              <Col sm={4} xs={4} md={4} >
-                                                <FormGroup controlId="alternativas4">
-                                                  <FormControl value={this.state.alternativas4} type="text" placeholder="Alternativa 4" />
-                                                </FormGroup>
-                                              </Col>
-                                              <Col sm={4} xs={4} md={4} >
-                                                <FormGroup controlId="peso4">
-                                                  <FormControl value={this.state.peso4} type="text" placeholder="Peso" />
-                                                </FormGroup>
-                                              </Col>
-                                            </Row>
-                                         </Form>) : ("")
+                (this.state.showAlt && !this.invalid()) ? (<Form onChange={this.onChangeAlt}>
+                  {
+                    this.state.alternativas.map((alt, index) => (
+                    <Row>
+                      <Col sm={4} xs={4} md={4} >
+                        <FormGroup controlId={index} nome="descricao">
+                          <FormControl value={this.state.alternativas[index].descricao} type="text" placeholder="Alternativa" nome="descricao"/>
+                        </FormGroup>
+                      </Col>
+                      <Col sm={4} xs={4} md={4} >
+                        <FormGroup controlId={index} name="peso">
+                          <FormControl value={this.state.alternativas[index].peso} type="text" placeholder="Peso" nome="peso"/>
+                        </FormGroup>
+                      </Col>
+                      <Col sm={4} xs={4} md={4} >
+                      <Button id={index} tipo="delete" onClick={this.question}>-</Button>
+                      </Col>
+                    </Row>
+                    ))
+                  }
+                  <Button tipo="insert" onClick={this.question}>+</Button>
+                  </Form>) : ("")
               }
               <Button bsStyle="success" bsSize="large" onClick={this.onCreate} block>
                 Adicionar
