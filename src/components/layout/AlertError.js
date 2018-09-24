@@ -24,8 +24,8 @@ export default class AlertSucess extends React.Component{
   render() {
     if (this.props.show) {
       return (
-        <Alert bsStyle="success">
-          {this.props.texto}        
+        <Alert bsStyle="warning">
+          {this.props.texto}
         </Alert>
       );
     }

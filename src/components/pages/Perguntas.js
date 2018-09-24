@@ -175,7 +175,7 @@ export default class CrudPerguntas extends React.Component{
           <Col sm={1} xs={1} md={1} />
           <Col sm={10} xs={10} md={10} >
           <FormGroup controlId="questionarioId">
-            <AlertSucess show={this.state.alert} />
+            <AlertSucess show={this.state.alert} texto="O item foi adicionado com sucesso!" />
             <h1>Questionário</h1>
 
             <FormControl onChange={this.handleChangeQues} componentClass="select" placeholder="select">
