@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import {FormGroup, FormControl, Button, Modal, Grid, Row, Col, Radio, ButtonGroup, ButtonToolbar, ToggleButtonGroup, ToggleButton} from 'react-bootstrap'
+import Loader from '../layout/Loading.js';
+import {FormGroup, FormControl, Button, Modal, Grid, Row, Col, Radio, ButtonGroup, ButtonToolbar, ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
 import '../../styles/css/Formulario.css';
+import { ClipLoader } from 'react-spinners';
 
 var respostas = {};
 
@@ -12,7 +14,7 @@ export default class Formulario extends React.Component{
 			questionarios:[], questionario:{
 				perguntas: [],
 				descricao: ""
-			}, respostas: [], questId: "", resultado: { codigo: '',faixas: []}, modalResult: false
+			}, respostas: [], questId: "", resultado: { codigo: '',faixas: []}, modalResult: false, loading: true
 		}
 
 		this.onChange = (evento) => {
@@ -95,7 +97,8 @@ export default class Formulario extends React.Component{
 		axios.get('https://bemapi.herokuapp.com/questionario')
 		.then((response) => {
 			this.setState({
-				questionarios: response.data
+				questionarios: response.data,
+				loading: false
 			});
 		})
 		.catch((error) =>{
@@ -120,11 +123,13 @@ export default class Formulario extends React.Component{
                 }
             </FormControl>
           </FormGroup>
-          {
-            (this.validateForm() ? <h3>Descrição</h3> : <h3></h3>)
-          }
+	        {
 
-          <p className="desc">{this.state.questionario.descricao}</p>
+	       	(this.validateForm() ? <h3>Descrição</h3> : <h3></h3>)
+	        
+	        }
+
+          	<p className="desc">{this.state.questionario.descricao}</p>
 
           <div>
           {
@@ -173,6 +178,6 @@ export default class Formulario extends React.Component{
       </Row>
       </Grid>
     );
+	}
   }
 
-}
