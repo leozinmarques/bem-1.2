@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import {isAdmin} from '../tils/Auth.js';
+import Ansiedade from './content/Ansiedade.js';
+import Estresse from './content/Estresse.js';
+import Depressao from './content/Depressao.js';
+import Sobre from './content/Sobre.js';
 import Home from './pages/Home.js';
 import Formulario from './pages/Formulario.js';
 import Questionario from './pages/Questionario.js';
@@ -38,6 +42,9 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/Formulario" component={Formulario} />
             <Route exact path="/Login" component={Login} />
+            <Route exact path="/Ansiedade" component={Ansiedade} />
+            <Route exact path="/Estresse" component={Estresse} />
+            <Route exact path="/Depressao" component={Depressao} />
             <PrivateRoute exact path="/Questionario" component={Questionario} />
             <PrivateRoute exact path="/Perguntas" component={Perguntas} />
             <PrivateRoute exact path="/CadAdmin" component={CadAdmin} />

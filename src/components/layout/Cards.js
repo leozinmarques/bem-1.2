@@ -3,6 +3,7 @@ import {Col, Row, Thumbnail, Button} from 'react-bootstrap';
 import ansiedade from '../../styles/images/ansiedade.jpg';
 import depressao from '../../styles/images/depressao.jpg';
 import estresse from '../../styles/images/estresse.jpg';
+import {Link} from 'react-router-dom';
 
 export default class Cards extends Component {
 	render(){
@@ -17,7 +18,7 @@ export default class Cards extends Component {
 			          impotentes, inúteis, culpadas, irritadas, magoadas...
 			        </p>
 			        <p>
-			          <Button bsStyle="primary">Ler Mais</Button>
+			          <Link to = "/Depressao"><Button bsStyle="primary">Ler Mais</Button></Link>
 			        </p>
 			      </Thumbnail>
 			    </Col>
@@ -29,7 +30,7 @@ export default class Cards extends Component {
 							  aperto no tórax, transpiração, e outras alterações as...
 			         </p>
 			        <p>
-			          <Button bsStyle="primary">Ler Mais</Button>
+			          <Link to = "/Ansiedade"><Button bsStyle="primary">Ler Mais</Button></Link>
 			        </p>
 			      </Thumbnail>
 			    </Col>
@@ -41,7 +42,7 @@ export default class Cards extends Component {
 							  tipos de estresse: o eustresse (eustress) ou agaste...
 			        </p>
 			        <p>
-			          <Button bsStyle="primary">Ler Mais</Button>
+			          <Link to = "/Estresse"><Button bsStyle="primary">Ler Mais</Button></Link>
 			        </p>
 			      </Thumbnail>
 			    </Col>
