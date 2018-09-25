@@ -1,5 +1,6 @@
 import React from 'react';
 import {Jumbotron, Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 export default class JumbotronBem extends React.Component{
 
@@ -14,7 +15,7 @@ export default class JumbotronBem extends React.Component{
 			    feito a partir da escala DASS21.
 			  </p>
 			  <p>
-			    <Button bsStyle="primary">Veja Mais</Button>
+			    <Link to ="/Sobre"><Button bsStyle="primary">Veja Mais</Button></Link>
 			  </p>
 			</Jumbotron>
 		);

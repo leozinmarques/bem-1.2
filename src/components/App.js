@@ -43,6 +43,7 @@ class App extends Component {
             <Route exact path="/Formulario" component={Formulario} />
             <Route exact path="/Login" component={Login} />
             <Route exact path="/Ansiedade" component={Ansiedade} />
+            <Route exact path="/Sobre" component={Sobre} />
             <Route exact path="/Estresse" component={Estresse} />
             <Route exact path="/Depressao" component={Depressao} />
             <PrivateRoute exact path="/Questionario" component={Questionario} />
