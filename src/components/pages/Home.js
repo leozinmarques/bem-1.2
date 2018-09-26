@@ -6,19 +6,19 @@ import {Grid, Col, Row} from 'react-bootstrap';
 
 
 export default class Home extends Component {
-  render() {
-    return (
-    	<Grid>
-	      	<Row>
-	      		<Col sm={1} xs={1} md={1} />
-	      		<Col sm={10} xs={10} md={10} >
-	      			<JumbotronBem />
-	      			<Cards />
-	      		</Col>
-	      		<Col sm={1} xs={1} md={1} />
-	      	</Row>
-      	</Grid>
-    );
-  }
+	render() {
+		return (
+			<Grid>
+			<Row>
+			<Col sm={1} xs={1} md={1} />
+			<Col sm={10} xs={10} md={10} >
+			<JumbotronBem />
+			<Cards />
+			</Col>
+			<Col sm={1} xs={1} md={1} />
+			</Row>
+			</Grid>
+			);
+	}
 }
 

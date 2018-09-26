@@ -25,13 +25,13 @@ export default class AlertSucess extends React.Component{
     if (this.props.show) {
       return (
         <Alert bsStyle="warning">
-          {this.props.texto}
+        {this.props.texto}
         </Alert>
+        );
+      }
+
+      return (
+      <a></a>
       );
     }
-
-    return (
-      <a></a>
-    );
   }
-}

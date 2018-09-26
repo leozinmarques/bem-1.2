@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Alert} from 'react-bootstrap';
 
 export default class AlertSucess extends React.Component{
@@ -25,13 +25,13 @@ export default class AlertSucess extends React.Component{
     if (this.props.show) {
       return (
         <Alert bsStyle="success">
-          {this.props.texto}        
+        {this.props.texto}        
         </Alert>
+        );
+      }
+
+      return (
+      <a></a>
       );
     }
-
-    return (
-      <a></a>
-    );
   }
-}

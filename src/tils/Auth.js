@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -31,7 +31,7 @@ export {setToken, getToken, getPapel, isAdmin, isLoggedIn,logout};
   function logout(){
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('papel_id');
-    <Redirect to='./'/>
+    return <Redirect to='./'/>
   }
 
   function getToken(token){
@@ -44,13 +44,6 @@ export {setToken, getToken, getPapel, isAdmin, isLoggedIn,logout};
 
   function isAdmin(){
     if(sessionStorage.getItem('papel_id') == 1){
-      return true
-    }
-    return false;
-  }
-
-  function isPsicologo(){
-    if(sessionStorage.getItem('papel_id') == 2){
       return true
     }
     return false;
